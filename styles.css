@@ -1,0 +1,1000 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background: #FAF6F3;
+}
+
+.app {
+    max-width: 1450px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Hero */
+.hero {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.hero-picture {
+    width: 100%;
+    display: block;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.hero-picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.hero-picture {
+    width: 100%;
+    display: block;
+}
+
+.hero-picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Countdown */
+.countdown {
+    background: #FAF7F3;
+    text-align: center;
+    padding: 24px 20px 20px;
+    margin: 16px;
+    border: 1px solid #d9cdc0;
+    border-radius: 12px;
+}
+
+.countdown-label {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #3D4A3A;
+    margin-bottom: 16px;
+    font-weight: 300;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+}
+
+.countdown-unit span {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: clamp(64px, 9vw, 96px);
+    font-weight: 100;
+    color: #3D4A3A;
+    line-height: 0.9;
+}
+
+.countdown-unit small {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #6B7B6A;
+    margin-top: 8px;
+    font-weight: 300;
+}
+
+.countdown-sep {
+    width: 1px;
+    height: 50px;
+    background: #C5AC96;
+    opacity: 0.4;
+    margin: 0 40px;
+}
+
+.countdown-heart {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: -20px;
+    font-size: 40px;
+    color: #C5AC96;
+}
+
+@media (max-width: 480px) {
+    .countdown {
+        padding: 16px 10px 12px;
+        margin: 12px;
+    }
+
+    .countdown-label {
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+    }
+
+    .countdown-unit {
+        min-width: 48px;
+    }
+
+    .countdown-unit span {
+        font-size: 36px;
+    }
+
+    .countdown-unit small {
+        font-size: 7px;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+
+    .countdown-sep {
+        height: 30px;
+        margin: 0 10px;
+    }
+
+    .countdown-heart {
+        font-size: 22px;
+        margin-top: 8px;
+        margin-bottom: -10px;
+    }
+}
+
+/* Parents */
+.parents {
+    background: #FAF7F3;
+    text-align: center;
+    padding: 28px 32px 24px;
+    margin: 16px;
+    border: 1px solid #d9cdc0;
+    border-radius: 12px;
+}
+
+.parents-title {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #3D4A3A;
+    font-weight: 300;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.parents-branch {
+    width: clamp(80px, 10vw, 140px);
+    height: auto;
+    display: block;
+    margin: -1.5vh auto 0.8vh;
+}
+
+.parents-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.parents-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parents-ramita {
+    width: clamp(40px, 5vw, 70px);
+    height: auto;
+    display: block;
+}
+
+.parents-col h3 {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #6B7B6A;
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.parents-col p {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    color: #3D4A3A;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.cross {
+    color: #6B7B6A;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .parents {
+        padding: 24px 20px 20px;
+    }
+
+    .parents-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .parents-center {
+        display: none;
+    }
+
+    .parents-col h3 {
+        font-size: 11px;
+        margin-bottom: 12px;
+    }
+
+    .parents-col p {
+        font-size: 16px;
+    }
+}
+
+/* Two Cards Row */
+.two-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px;
+}
+
+.info-card {
+    background: #FAF7F3;
+    text-align: center;
+    padding: 32px 20px;
+    border: 1px solid #d9cdc0;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dress-code {
+    text-align: center;
+}
+
+.dress-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    width: 100%;
+    min-height: 150px;
+    position: relative;
+}
+
+.dress-icon-big {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1.5px solid #d9cdc0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D4A3A;
+    flex-shrink: 0;
+    position: absolute;
+    left: clamp(18px, 6vw, 70px);
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.dress-icon-big img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dress-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.info-label {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: clamp(13px, 1.5vw, 16px);
+    letter-spacing: 3px;
+    color: #3D4A3A;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.info-formal {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(36px, 5vw, 52px);
+    color: #3D4A3A;
+    margin-bottom: 12px;
+    letter-spacing: 5px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.info-suggest {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: clamp(11px, 1.2vw, 14px);
+    letter-spacing: 2px;
+    color: #6B7B6A;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.color-dots {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.color-dots span {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: block;
+}
+
+.venue-img {
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto 16px;
+}
+
+.btn-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #7E7F6C;
+    color: #fff;
+    border-radius: 30px;
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-location:hover {
+    background: #6E6F5C;
+}
+
+.loc-icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* Event Details */
+.event-details {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr);
+    gap: 16px;
+    margin: 16px;
+}
+
+.itinerary-card,
+.detail-card {
+    background: #FAF7F3;
+    border: 1px solid #d9cdc0;
+    border-radius: 12px;
+}
+
+.itinerary-card {
+    padding: 38px 24px 22px;
+}
+
+.section-title {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: clamp(12px, 1.2vw, 15px);
+    letter-spacing: 3px;
+    color: #3D4A3A;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section-branch {
+    width: 86px;
+    height: auto;
+    display: block;
+    margin: 8px auto 16px;
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: 58px 22px 1fr;
+    gap: 24px;
+    align-items: stretch;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.timeline-icons,
+.timeline-list {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 18px;
+}
+
+.timeline-icons span {
+    width: 54px;
+    height: 54px;
+    border: 1px solid #d9cdc0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D4A3A;
+}
+
+.timeline-icons svg {
+    width: 27px;
+    height: 27px;
+}
+
+.timeline-line {
+    position: relative;
+}
+
+.timeline-line::before {
+    content: "";
+    position: absolute;
+    top: 27px;
+    bottom: 27px;
+    left: 50%;
+    width: 2px;
+    background: #b5aa9b;
+    transform: translateX(-50%);
+}
+
+.timeline-line::after {
+    content: "";
+    position: absolute;
+    top: 27px;
+    bottom: 27px;
+    left: 50%;
+    width: 8px;
+    transform: translateX(-50%);
+    background:
+        radial-gradient(circle, #a89b8d 0 4px, transparent 4px) center top / 8px 20% repeat-y;
+}
+
+.timeline-list div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 54px;
+}
+
+.timeline-list strong,
+.timeline-list span,
+.weather-card p,
+.detail-song,
+.detail-artist {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #3D4A3A;
+}
+
+.timeline-list strong {
+    font-size: 20px;
+    line-height: 1.05;
+}
+
+.timeline-list span {
+    font-size: 19px;
+    line-height: 1.15;
+}
+
+.details-side {
+    display: grid;
+    grid-template-rows: 1fr calc(2.05fr + 16px);
+    gap: 16px;
+}
+
+.detail-card {
+    padding: 26px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-card {
+    gap: 22px;
+}
+
+.weather-card .section-title {
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.weather-card p {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.weather-icon {
+    width: 62px;
+    height: 62px;
+    color: #3D4A3A;
+    flex-shrink: 0;
+}
+
+.music-playlist-card {
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.music-block,
+.playlist-block {
+    width: 100%;
+}
+
+.playlist-block {
+    padding-top: 24px;
+    border-top: 1px solid rgba(217, 205, 192, 0.8);
+}
+
+.music-note-large {
+    color: #6B7B6A;
+    font-size: 30px;
+    line-height: 1;
+    margin: 8px 0 4px;
+}
+
+.detail-song {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.detail-artist {
+    font-size: 18px;
+    line-height: 1.15;
+}
+
+.track-count {
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #6B7B6A;
+    margin-top: 8px;
+}
+
+.detail-music-controls {
+    width: fit-content;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 22px auto 0;
+}
+
+.detail-music-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid #9e9688;
+    background: transparent;
+    color: #3D4A3A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.detail-skip-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #c7bcae;
+    background: transparent;
+    color: #3D4A3A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+}
+
+.detail-skip-btn:hover,
+.detail-music-btn:hover {
+    background: #3D4A3A;
+    color: #FAF8F5;
+}
+
+.playlist-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.spotify-icon {
+    width: 24px;
+    height: 24px;
+    color: #2f3f35;
+}
+
+.btn-playlist {
+    width: min(100%, 360px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 999px;
+    background: #7E7F6C;
+    color: #FAF7F3;
+    font-family: 'Raleway', -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-playlist:hover {
+    background: #6E6F5C;
+}
+
+@media (max-width: 480px) {
+    .two-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .music-note-large {
+        font-size: 22px;
+        margin: 8px 0 10px;
+    }
+
+    .detail-song {
+        line-height: 1.05;
+        margin-bottom: 6px;
+    }
+
+    .detail-artist {
+        line-height: 1.08;
+    }
+
+    .dress-content {
+        flex-direction: column;
+        gap: 10px;
+        min-height: 120px;
+    }
+
+    .dress-icon-big {
+        width: 70px;
+        height: 70px;
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+
+    .dress-icon-big img {
+        width: 42px;
+        height: 42px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 900px) and (min-width: 481px) {
+    .dress-content {
+        flex-direction: column;
+        gap: 12px;
+        min-height: 120px;
+    }
+
+    .dress-icon-big {
+        width: 82px;
+        height: 82px;
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+
+    .dress-icon-big img {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 760px) {
+    .event-details {
+        grid-template-columns: 1fr;
+    }
+
+    .itinerary-card {
+        padding: 32px 16px 18px;
+    }
+
+    .timeline {
+        grid-template-columns: 46px 16px 1fr;
+        gap: 16px;
+        max-width: 100%;
+    }
+
+    .timeline-icons span {
+        width: 42px;
+        height: 42px;
+    }
+
+    .timeline-icons svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .timeline-icons,
+    .timeline-list {
+        gap: 14px;
+    }
+
+    .timeline-list div {
+        min-height: 42px;
+    }
+
+    .timeline-list strong {
+        font-size: 16px;
+    }
+
+    .timeline-list span {
+        font-size: 15px;
+    }
+
+    .timeline-line::before,
+    .timeline-line::after {
+        top: 21px;
+        bottom: 21px;
+    }
+
+    .details-side {
+        grid-template-rows: auto;
+    }
+
+    .detail-card {
+        padding: 24px 18px;
+    }
+
+    .weather-card {
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Calendar Button */
+.btn-calendar {
+    position: absolute;
+    bottom: 13.5%;
+    left: 19%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8vw;
+    padding: 1.7vh 1.5vw;
+    background: #7E7F6C;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', -apple-system, sans-serif;
+    font-size: clamp(10px, 1vw, 14px);
+    font-weight: 400;
+    letter-spacing: 0.15vw;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.btn-calendar:hover {
+    background: #6E6F5C;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cal-icon {
+    width: clamp(12px, 1.2vw, 18px);
+    height: clamp(12px, 1.2vw, 18px);
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .btn-calendar {
+        bottom: 7.5%;
+        left: 26.5%;
+        padding: 1.5vh 7vw;
+        font-size: clamp(8px, 0.9vw, 11px);
+        letter-spacing: 0.1vw;
+        gap: 1vw;
+    }
+
+    .cal-icon {
+        width: clamp(10px, 1vw, 14px);
+        height: clamp(10px, 1vw, 14px);
+    }
+}
+
+/* Music Player */
+.music-player {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(250, 248, 245, 0.95);
+    border: 1px solid rgba(197, 172, 150, 0.3);
+    border-radius: 50px;
+    padding: 10px 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.music-note {
+    font-size: 22px;
+    color: #3D4A3A;
+    line-height: 1;
+}
+
+.music-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
+    min-width: 0;
+    max-width: 190px;
+}
+
+.music-title {
+    font-family: 'Montserrat', -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #3D4A3A;
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.music-artist {
+    font-family: 'Montserrat', -apple-system, sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: #6B7B6A;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.music-player-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.music-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid #3D4A3A;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D4A3A;
+    font-size: 11px;
+    padding: 0;
+    margin-left: 4px;
+    transition: all 0.3s ease;
+}
+
+.music-skip-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 22px;
+    line-height: 1;
+    padding-bottom: 4px;
+    margin-left: 0;
+}
+
+@media (max-width: 480px) {
+    .music-player {
+        top: 15px;
+        right: 8px;
+        gap: 6px;
+        padding: 4px 8px;
+        border-radius: 30px;
+    }
+
+    .music-info {
+        max-width: 105px;
+    }
+
+    .music-note {
+        font-size: 13px;
+    }
+
+    .music-title {
+        font-size: 9px;
+    }
+
+    .music-artist {
+        font-size: 8px;
+    }
+
+    .music-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 7px;
+        margin-left: 2px;
+    }
+
+    .music-player-controls {
+        gap: 3px;
+    }
+
+    .music-skip-btn {
+        width: 18px;
+        height: 18px;
+        font-size: 16px;
+        padding-bottom: 3px;
+        margin-left: 0;
+    }
+}
+
+.music-btn:hover {
+    background: #3D4A3A;
+    color: #FAF8F5;
+}
+
+.pause-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 10px;
+    letter-spacing: -1px;
+}
