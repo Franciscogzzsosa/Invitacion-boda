@@ -287,9 +287,10 @@ function initCountdown() {
 
 function initCalendar() {
     const btn = document.getElementById('calendar-btn');
-    if (!btn) return;
+    const footerBtn = document.getElementById('footer-calendar-btn');
+    if (!btn && !footerBtn) return;
 
-    btn.addEventListener('click', () => {
+    const openCalendar = () => {
         const event = {
             title: 'Boda de Victor & Alicia',
             location: 'Hacienda San Matías, Guanajuato, Gto.',
@@ -300,7 +301,10 @@ function initCalendar() {
 
         const googleUrl = buildGoogleCalendarUrl(event);
         window.open(googleUrl, '_blank');
-    });
+    };
+
+    if (btn) btn.addEventListener('click', openCalendar);
+    if (footerBtn) footerBtn.addEventListener('click', openCalendar);
 }
 
 function buildGoogleCalendarUrl(event) {
