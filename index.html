@@ -149,7 +149,7 @@
                     <span class="day-event-time">5:30 pm</span>
                     <span class="day-event-label">Civil</span>
                 </li>
-                <li class="day-event above" style="--p: 12.5%">
+                <li class="day-event above is-main" style="--p: 12.5%">
                     <span class="day-event-time">6:00 pm</span>
                     <span class="day-event-label">Boda religiosa</span>
                     <span class="day-event-dot" aria-hidden="true"></span>
@@ -164,12 +164,13 @@
                     <span class="day-event-label">Cena</span>
                     <span class="day-event-dot" aria-hidden="true"></span>
                 </li>
-                <li class="day-event below" style="--p: 100%">
+                <li class="day-event below is-end" style="--p: 100%">
                     <span class="day-event-dot" aria-hidden="true"></span>
                     <span class="day-event-time">1:00 am</span>
                     <span class="day-event-label">Cierre</span>
                 </li>
             </ol>
+            <p class="day-scroll-hint" aria-hidden="true">Desliza · 6 momentos</p>
         </div>
     </section>
 
@@ -221,15 +222,30 @@
                     <span>Música</span>
                 </div>
                 <div class="vinyl" id="vinyl">
-                    <div class="vinyl-disc" id="vinyl-disc">
-                        <div class="vinyl-grooves" aria-hidden="true"></div>
-                        <div class="vinyl-label">
-                            <span class="vinyl-eyebrow">EN VIVO</span>
-                            <span class="vinyl-title" id="section-song-title">A Thousand Years</span>
-                            <span class="vinyl-artist" id="section-song-artist">Christina Perri</span>
-                        </div>
-                        <span class="vinyl-hole" aria-hidden="true"></span>
-                    </div>
+                    <svg class="vinyl-svg" id="vinyl-svg" viewBox="0 0 100 100" aria-hidden="true">
+                        <defs>
+                            <clipPath id="vinyl-clip">
+                                <path d="M 0 50 A 50 50 0 0 0 100 50 A 50 50 0 0 0 0 50 M 49 50 A 1 1 0 0 1 51 50 A 1 1 0 0 1 49 50"/>
+                            </clipPath>
+                            <radialGradient id="vinyl-grooves" cx="50.5%" cy="50.5%" r="2%" spreadMethod="repeat">
+                                <stop offset="0.8" stop-color="var(--ink-deep)"/>
+                                <stop offset="1.0" stop-color="#3a3a36"/>
+                            </radialGradient>
+                            <linearGradient id="vinyl-label-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0.3" stop-color="var(--tan)"/>
+                                <stop offset="0.3" stop-color="var(--ink)"/>
+                            </linearGradient>
+                            <path id="vinyl-text-path" d="M 40 50 A 10 10 180 0 0 60 50"/>
+                        </defs>
+                        <g clip-path="url(#vinyl-clip)">
+                            <circle cx="50" cy="50" r="50" fill="url(#vinyl-grooves)"/>
+                            <circle cx="50" cy="50" r="15" fill="url(#vinyl-label-grad)"/>
+                            <circle cx="50" cy="50" r="13" fill="var(--tan)"/>
+                            <text fill="var(--ink-deep)" font-size="6">
+                                <textPath href="#vinyl-text-path" startOffset="50%" text-anchor="middle">A · V</textPath>
+                            </text>
+                        </g>
+                    </svg>
                     <div class="vinyl-arm" aria-hidden="true">
                         <span class="vinyl-arm-pivot"></span>
                         <span class="vinyl-arm-head"></span>

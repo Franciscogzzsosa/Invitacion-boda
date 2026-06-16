@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCountUp();
     initStoryReveal();
     initLightbox();
+    initItineraryReveal();
 });
 
 function initMusic() {
@@ -291,10 +292,8 @@ function initPlaylist() {
 }
 
 function syncVinyl(playing) {
-    const disc = document.getElementById('vinyl-disc');
     const vinyl = document.getElementById('vinyl');
-    if (!disc || !vinyl) return;
-    disc.classList.toggle('is-playing', playing);
+    if (!vinyl) return;
     vinyl.classList.toggle('is-playing', playing);
 }
 
@@ -428,6 +427,32 @@ function initStoryReveal() {
         });
     }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
     paragraphs.forEach((p) => io.observe(p));
+}
+
+function initItineraryReveal() {
+    const section = document.querySelector('.itinerary');
+    if (!section) return;
+    const events = section.querySelectorAll('.day-event');
+    if (!events.length) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+        events.forEach((e) => e.classList.add('is-revealed'));
+        return;
+    }
+    if (!('IntersectionObserver' in window)) {
+        events.forEach((e) => e.classList.add('is-revealed'));
+        return;
+    }
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            events.forEach((ev, i) => {
+                setTimeout(() => ev.classList.add('is-revealed'), i * 110);
+            });
+            io.unobserve(entry.target);
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+    io.observe(section);
 }
 
 function initLightbox() {

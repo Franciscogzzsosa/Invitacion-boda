@@ -658,13 +658,14 @@ button { font-family: inherit; cursor: pointer; }
     margin: 0 auto;
 }
 
-/* ---------- Weather art (kylor animated icons, adapted to palette) ---------- */
+/* ---------- Weather art (kylor icons, inverted for cream page) ---------- */
 .weather-art {
-    color: var(--sage);
-    font-size: clamp(11px, 1.5vw, 16px);
-    margin-bottom: clamp(20px, 2.4vw, 28px);
-    display: flex;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    margin: 0 auto clamp(20px, 2.4vw, 28px);
+    color: var(--ink);
+    font-size: 11px;
 }
 .icon {
     position: relative;
@@ -681,14 +682,14 @@ button { font-family: inherit; cursor: pointer; }
     width: 3.6875em;
     height: 3.6875em;
     margin: -1.84375em;
-    background: currentColor;
+    background: var(--bg);
     border-radius: 50%;
     box-shadow:
-        -2.1875em 0.6875em 0 -0.6875em,
-         2.0625em 0.9375em 0 -0.9375em,
-         0 0 0 0.375em var(--bg),
-        -2.1875em 0.6875em 0 -0.3125em var(--bg),
-         2.0625em 0.9375em 0 -0.5625em var(--bg);
+        -2.1875em 0.6875em 0 -0.6875em var(--bg),
+         2.0625em 0.9375em 0 -0.9375em var(--bg),
+         0 0 0 0.375em currentColor,
+        -2.1875em 0.6875em 0 -0.3125em currentColor,
+         2.0625em 0.9375em 0 -0.5625em currentColor;
 }
 .icon .cloud:after {
     content: '';
@@ -698,8 +699,8 @@ button { font-family: inherit; cursor: pointer; }
     display: block;
     width: 4.5625em;
     height: 1em;
-    background: currentColor;
-    box-shadow: 0 0.4375em 0 -0.0625em var(--bg);
+    background: var(--bg);
+    box-shadow: 0 0.4375em 0 -0.0625em currentColor;
 }
 .icon .sun {
     position: absolute;
@@ -708,9 +709,9 @@ button { font-family: inherit; cursor: pointer; }
     width: 2.5em;
     height: 2.5em;
     margin: -1.25em;
-    background: currentColor;
+    background: var(--bg);
     border-radius: 50%;
-    box-shadow: 0 0 0 0.375em var(--bg);
+    box-shadow: 0 0 0 0.375em currentColor;
     animation: weather-spin 12s infinite linear;
 }
 .icon .rays {
@@ -721,9 +722,9 @@ button { font-family: inherit; cursor: pointer; }
     width: 0.375em;
     height: 1.125em;
     margin-left: -0.1875em;
-    background: var(--bg);
+    background: currentColor;
     border-radius: 0.25em;
-    box-shadow: 0 5.375em var(--bg);
+    box-shadow: 0 5.375em currentColor;
 }
 .icon .rays:before,
 .icon .rays:after {
@@ -736,9 +737,9 @@ button { font-family: inherit; cursor: pointer; }
     height: 1.125em;
     transform: rotate(60deg);
     transform-origin: 50% 3.25em;
-    background: var(--bg);
+    background: currentColor;
     border-radius: 0.25em;
-    box-shadow: 0 5.375em var(--bg);
+    box-shadow: 0 5.375em currentColor;
 }
 .icon .rays:before {
     transform: rotate(120deg);
@@ -754,7 +755,7 @@ button { font-family: inherit; cursor: pointer; }
     width: 3.75em;
     height: 3.75em;
     margin: 0.375em 0 0 -2em;
-    background: currentColor;
+    background: var(--bg);
 }
 .icon .rain:after {
     content: '';
@@ -765,12 +766,12 @@ button { font-family: inherit; cursor: pointer; }
     width: 1.125em;
     height: 1.125em;
     margin: -1em 0 0 -0.25em;
-    background: var(--ink);
+    background: currentColor;
     border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
     box-shadow:
-        0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.2),
-        -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.2),
-        -1.375em -0.125em 0 rgba(61, 74, 58, 0.2);
+        0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.25),
+        -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.25),
+        -1.375em -0.125em 0 rgba(61, 74, 58, 0.25);
     transform: rotate(-28deg);
     animation: weather-rain 3s linear infinite;
 }
@@ -779,30 +780,30 @@ button { font-family: inherit; cursor: pointer; }
 }
 @keyframes weather-rain {
     0% {
-        background: var(--ink);
+        background: currentColor;
         box-shadow:
-            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -1.375em -0.125em 0 var(--ink);
+            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -1.375em -0.125em 0 currentColor;
     }
     25% {
         box-shadow:
-            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -0.875em 1.125em 0 -0.125em var(--ink),
-            -1.375em -0.125em 0 rgba(61, 74, 58, 0.2);
+            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -0.875em 1.125em 0 -0.125em currentColor,
+            -1.375em -0.125em 0 rgba(61, 74, 58, 0.25);
     }
     50% {
-        background: rgba(61, 74, 58, 0.35);
+        background: rgba(61, 74, 58, 0.5);
         box-shadow:
-            0.625em 0.875em 0 -0.125em var(--ink),
-            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -1.375em -0.125em 0 rgba(61, 74, 58, 0.2);
+            0.625em 0.875em 0 -0.125em currentColor,
+            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -1.375em -0.125em 0 rgba(61, 74, 58, 0.25);
     }
     100% {
         box-shadow:
-            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.2),
-            -1.375em -0.125em 0 var(--ink);
+            0.625em 0.875em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -0.875em 1.125em 0 -0.125em rgba(61, 74, 58, 0.25),
+            -1.375em -0.125em 0 currentColor;
     }
 }
 
@@ -848,100 +849,39 @@ button { font-family: inherit; cursor: pointer; }
     animation: now-pulse 2.6s ease-out infinite;
 }
 
-/* ---------- Vinyl player ---------- */
+/* ---------- Vinyl player (SVG) ---------- */
 .vinyl {
     position: relative;
-    width: clamp(180px, 22vw, 220px);
-    height: clamp(180px, 22vw, 220px);
+    width: clamp(130px, 16vw, 170px);
+    height: clamp(130px, 16vw, 170px);
     margin: 0 auto clamp(12px, 1.6vw, 20px);
 }
-.vinyl-disc {
-    position: relative;
+.vinyl-svg {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at center, var(--tan) 0 32%, transparent 32%),
-        repeating-radial-gradient(circle at center, #1f2820 0 1.5px, #161c17 1.5px 3px);
-    box-shadow: 0 12px 30px rgba(42, 42, 40, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.4);
-    animation: vinyl-spin 5.5s linear infinite;
+    filter: sepia(0.15) saturate(0.95);
+    animation: vinyl-spin 2s linear infinite;
     animation-play-state: paused;
-    transition: box-shadow 320ms ease;
+    transform-origin: center;
+    transition: filter 320ms ease;
 }
-.vinyl-disc.is-playing {
+.vinyl.is-playing .vinyl-svg {
     animation-play-state: running;
-    box-shadow: 0 12px 30px rgba(42, 42, 40, 0.24), inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+    filter: sepia(0.05) saturate(1);
 }
 @keyframes vinyl-spin {
-    to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
-.vinyl-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 36%;
-    height: 36%;
-    border-radius: 50%;
-    background: var(--tan);
-    color: var(--ink);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 6px 8px;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-.vinyl-eyebrow {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 7px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: rgba(42, 42, 40, 0.7);
-    line-height: 1;
-    margin-bottom: 5px;
-}
-.vinyl-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(10px, 1.1vw, 12px);
-    line-height: 1.1;
-    color: var(--ink-deep);
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.vinyl-artist {
-    font-family: var(--font-sans);
-    font-weight: 300;
-    font-size: 8px;
-    letter-spacing: 0.1em;
-    color: rgba(42, 42, 40, 0.75);
-    line-height: 1;
-    margin-top: 3px;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.vinyl-hole {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.55);
-    transform: translate(-50%, -50%);
+.vinyl-svg text {
+    font-family: var(--font-script);
+    letter-spacing: 0.3em;
 }
 .vinyl-arm {
     position: absolute;
-    top: 0;
+    top: 6px;
     right: -8px;
     width: 64px;
     height: 4px;
@@ -1056,7 +996,7 @@ button { font-family: inherit; cursor: pointer; }
    STORY — full-width photo + centered body
    ============================================================= */
 .story {
-    padding: var(--section-y) var(--gutter) clamp(40px, 5vh, 72px);
+    padding: var(--section-y) var(--gutter) clamp(20px, 3vh, 40px);
     max-width: var(--max-w);
     margin: 0 auto;
 }
@@ -1193,7 +1133,7 @@ button { font-family: inherit; cursor: pointer; }
     font-size: clamp(22px, 2.6vw, 30px);
     line-height: 1.35;
     color: var(--ink-deep);
-    margin: 0 0 24px;
+    margin: 0 0 18px;
     text-indent: 0;
     text-align: center;
 }
@@ -1831,33 +1771,56 @@ button { font-family: inherit; cursor: pointer; }
 
     .itinerary-item { display: none; }
     .day-timeline {
-        padding: 30px 0 30px 50px;
+        padding: 12px 0 4px;
+        margin-top: 16px;
     }
+
     .day-axis { display: none; }
-    .day-bar {
-        top: 30px;
-        bottom: 30px;
-        left: 24px;
-        right: auto;
-        width: 1px;
-        height: auto;
-    }
+    .day-bar { display: none; }
     .day-events {
         position: static;
         inset: auto;
         height: auto;
         display: flex;
-        flex-direction: column;
-        gap: 22px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding: 4px var(--gutter) 12px;
+        margin: 0 calc(-1 * var(--gutter));
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        list-style: none;
     }
+    .day-events::-webkit-scrollbar { display: none; }
     .day-event {
         position: relative;
+        flex: 0 0 78%;
+        scroll-snap-align: center;
         left: auto !important;
         transform: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         min-width: 0;
-        padding: 0;
+        min-height: 168px;
+        padding: 22px 20px 24px;
         text-align: left;
+        background: var(--bg);
+        border: 1px solid var(--rule);
+        /* Stagger reveal on scroll */
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
+    .day-event.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .day-event { opacity: 1; transform: none; transition: none; }
+    }
+    .day-event::before { content: none; }
+    .day-event-dot { display: none; }
     .day-event.above,
     .day-event.below {
         flex-direction: column;
@@ -1865,20 +1828,107 @@ button { font-family: inherit; cursor: pointer; }
         bottom: auto;
         top: auto;
     }
-    .day-event-dot {
-        position: absolute;
-        left: -32px;
-        top: 8px;
-        margin: 0;
-    }
     .day-event-time {
-        font-size: 14px;
-        margin: 0;
+        display: block;
+        width: 100%;
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: italic;
+        font-size: 22px;
+        color: var(--tan);
+        letter-spacing: 0.02em;
+        line-height: 1;
+        margin: 0 0 4px;
+        background: transparent;
+        border: none;
+        padding: 0;
+        position: static;
+        transform: none;
+        white-space: normal;
+    }
+    .day-event-time::after {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--rule);
+        margin-top: 14px;
     }
     .day-event-label {
-        font-size: 12px;
-        margin: 4px 0 0;
+        display: block;
+        width: 100%;
+        font-family: var(--font-serif);
+        font-weight: 400;
+        font-style: normal;
+        font-size: 15px;
+        color: var(--ink);
+        letter-spacing: 0;
+        line-height: 1.35;
+        margin: 0;
         max-width: none;
+        background: transparent;
+        border: none;
+        padding: 0;
+        position: static;
+        transform: none;
+    }
+    .day-scroll-hint {
+        text-align: center;
+        font-family: var(--font-sans);
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--sage);
+        margin: 12px 0 0;
+    }
+
+    /* Main event — Boda religiosa */
+    .day-event.is-main {
+        background: var(--ink);
+        border-color: var(--ink);
+        min-height: 200px;
+    }
+    .day-event.is-main::before { content: none; }
+    .day-event.is-main .day-event-time {
+        color: var(--tan);
+        font-size: 30px;
+        font-weight: 500;
+    }
+    .day-event.is-main .day-event-time::after {
+        background: var(--tan);
+        width: 36px;
+    }
+    .day-event.is-main .day-event-label {
+        color: var(--bg);
+        font-size: 17px;
+        font-weight: 500;
+    }
+    .day-event.is-main .day-event-label::before {
+        content: "MOMENTO PRINCIPAL";
+        display: block;
+        font-family: var(--font-sans);
+        font-weight: 400;
+        font-style: normal;
+        font-size: 8px;
+        letter-spacing: 0.32em;
+        color: var(--tan);
+        margin-bottom: 10px;
+    }
+
+    /* End event — Cierre */
+    .day-event.is-end {
+        background: var(--bg);
+        border-color: var(--ink);
+    }
+    .day-event.is-end::before { content: none; }
+    .day-event.is-end .day-event-time {
+        color: var(--ink);
+        font-size: 18px;
+    }
+    .day-event.is-end .day-event-label {
+        color: var(--sage);
+        font-style: italic;
     }
 
     .now {
@@ -2034,19 +2084,28 @@ button { font-family: inherit; cursor: pointer; }
 
     .itinerary-item { display: none; }
     .day-timeline {
-        padding: 24px 0 24px 40px;
+        padding: 8px 0 0;
     }
-    .day-bar {
-        left: 18px;
+    .day-events {
+        gap: 10px;
+        padding: 4px var(--gutter) 8px;
     }
-    .day-event-dot {
-        left: -26px;
-        width: 10px;
-        height: 10px;
-        border-width: 2px;
+    .day-event {
+        flex: 0 0 82%;
+        min-height: 152px;
+        padding: 20px 18px 22px;
     }
-    .day-event-time { font-size: 13px; }
-    .day-event-label { font-size: 11px; }
+    .day-event-time { font-size: 20px; }
+    .day-event-label { font-size: 14px; }
+
+    .day-event.is-main {
+        min-height: 184px;
+    }
+    .day-event.is-main .day-event-time { font-size: 26px; }
+    .day-event.is-main .day-event-label { font-size: 16px; }
+    .day-event.is-main .day-event-label::before { font-size: 7px; }
+
+    .day-event.is-end .day-event-time { font-size: 16px; }
 
     .now-controls {
         gap: 14px;
@@ -2137,7 +2196,7 @@ button { font-family: inherit; cursor: pointer; }
     .links-row,
     .links-arrow,
     .links-num,
-    .vinyl-disc,
+    .vinyl-svg,
     .vinyl-arm,
     .icon .sun,
     .icon .rain:after,
@@ -2146,5 +2205,5 @@ button { font-family: inherit; cursor: pointer; }
         animation: none !important;
         transition: none !important;
     }
-    .vinyl-disc { animation-play-state: paused !important; }
+    .vinyl-svg { animation-play-state: paused !important; }
 }
