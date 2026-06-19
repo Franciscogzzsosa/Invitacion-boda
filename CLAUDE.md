@@ -45,5 +45,5 @@ Any other static server works (`npx serve`, `php -S localhost:8000`, etc.).
 - **Add/reorder playlist tracks** → edit the `playlist` array in `initPlaylist`. Drop the mp3 into `playlist/` first; filename must match exactly.
 - **Replace hero photo** → swap `img/Hero.png` (desktop) and `img/Hero-Movil.png` (mobile, used under 768px via `<picture>`).
 - **Edit guest-link URLs** → `href="#"` placeholders in `.guest-links` section of `index.html` (Instagram hashtag, Google Maps, photo album, WhatsApp RSVP).
-- **Pending content** marked `PENDIENTE` in HTML: hospedaje suggestions, event menu, city activities. Also `POR CONFIRMAR` for weather.
+- **Pending content** marked `PENDIENTE` in HTML: event menu. Also `POR CONFIRMAR` for weather.
 - **Spotify playlist link** is hardcoded in `index.html:254` — update if the playlist changes.

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pdfslick/core@4.0.0/dist/pdf_viewer.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="img/Favicon.png" type="image/x-icon">
 </head>
@@ -403,12 +404,14 @@
                     <span class="links-block-count">03</span>
                 </div>
                 <ol class="links-info-list">
-                    <li class="links-info-item">
-                        <span class="links-info-icon"><img src="img/iconos/HOSPEDAJE.png" alt=""></span>
-                        <div class="links-info-meta">
-                            <h3>Sugerencia de hospedaje</h3>
-                            <p>PENDIENTE</p>
-                        </div>
+                    <li>
+                        <a class="links-info-item" href="HOTELES%20GUANAJUATO%20CENTRO%20BODA%20A&amp;V.pdf" data-pdf-title="Sugerencia de hospedaje">
+                            <span class="links-info-icon"><img src="img/iconos/HOSPEDAJE.png" alt=""></span>
+                            <div class="links-info-meta">
+                                <h3>Sugerencia de hospedaje</h3>
+                                <p>VER PDF</p>
+                            </div>
+                        </a>
                     </li>
                     <li class="links-info-item">
                         <span class="links-info-icon"><img src="img/iconos/menu.png" alt=""></span>
@@ -417,12 +420,14 @@
                             <p>PENDIENTE</p>
                         </div>
                     </li>
-                    <li class="links-info-item">
-                        <span class="links-info-icon"><img src="img/iconos/ACTIVIDADES.png" alt=""></span>
-                        <div class="links-info-meta">
-                            <h3>Actividades en la ciudad</h3>
-                            <p>PENDIENTE</p>
-                        </div>
+                    <li>
+                        <a class="links-info-item" href="QU%C3%89%20HACER%20EN%20GUANAJUATO.pdf" data-pdf-title="Actividades en la ciudad">
+                            <span class="links-info-icon"><img src="img/iconos/ACTIVIDADES.png" alt=""></span>
+                            <div class="links-info-meta">
+                                <h3>Actividades en la ciudad</h3>
+                                <p>VER PDF</p>
+                            </div>
+                        </a>
                     </li>
                 </ol>
             </div>
@@ -441,6 +446,29 @@
         <img class="lightbox-img" id="lightbox-img" src="" alt="">
     </dialog>
 
+    <dialog class="pdf-modal" id="pdf-modal" aria-labelledby="pdf-modal-title">
+        <div class="pdf-modal-head">
+            <h2 id="pdf-modal-title">PDF</h2>
+            <div class="pdf-modal-actions">
+                <button class="pdf-modal-tool" id="pdf-modal-prev" type="button" aria-label="Página anterior">‹</button>
+                <span class="pdf-modal-page" id="pdf-modal-page">-- / --</span>
+                <button class="pdf-modal-tool" id="pdf-modal-next" type="button" aria-label="Página siguiente">›</button>
+                <button class="pdf-modal-tool" id="pdf-modal-zoom-out" type="button" aria-label="Alejar">−</button>
+                <button class="pdf-modal-tool" id="pdf-modal-zoom-in" type="button" aria-label="Acercar">+</button>
+                <a class="pdf-modal-open" id="pdf-modal-open" href="#" target="_blank" rel="noopener noreferrer">Abrir PDF</a>
+                <button class="pdf-modal-close" type="button" aria-label="Cerrar">×</button>
+            </div>
+        </div>
+        <div class="pdf-modal-viewer pdfSlick" id="pdf-modal-viewer">
+            <div class="pdfSlickContainer" id="pdf-viewer-container">
+                <div class="pdfSlickViewer pdfViewer" id="pdf-viewer"></div>
+            </div>
+            <iframe class="pdf-modal-frame" id="pdf-modal-frame" title="Vista previa del PDF"></iframe>
+        </div>
+    </dialog>
+
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pdfslick/core@4.0.0/dist/umd/index.js"></script>
+    <script src="pdf-viewer.js"></script>
 </body>
 </html>
