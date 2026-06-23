@@ -100,6 +100,26 @@ function initPdfViewer() {
         setFallbackMode(false);
     };
 
+    // On mobile, open PDF in popup using iframe (native browser viewer)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 560;
+
+    if (isMobile) {
+        triggers.forEach((trigger) => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                const pdfUrl = trigger.getAttribute('href');
+                if (!pdfUrl) return;
+                
+                title.textContent = trigger.dataset.pdfTitle || 'PDF';
+                openLink.href = pdfUrl;
+                pageLabel.textContent = '';
+                setFallbackMode(true, pdfUrl);
+                openDialog();
+            });
+        });
+        return; // Skip PDFSlick on mobile
+    }
+
     triggers.forEach((trigger) => {
         trigger.addEventListener('click', (event) => {
             event.preventDefault();
@@ -142,3 +162,113 @@ function initPdfViewer() {
         pdfSlick?._cleanup();
     });
 }
+
+/* ── Image Viewer (for PDF as images) ── */
+function initImageViewer() {
+    const viewer = document.getElementById('img-viewer');
+    const img = document.getElementById('img-viewer-img');
+    const body = document.getElementById('img-viewer-body');
+    const title = document.getElementById('img-viewer-title');
+    const count = document.getElementById('img-viewer-count');
+    const prevBtn = document.getElementById('img-viewer-prev');
+    const nextBtn = document.getElementById('img-viewer-next');
+    const closeBtn = document.getElementById('img-viewer-close');
+    
+    if (!viewer || !img) return;
+    
+    let images = [];
+    let currentIndex = 0;
+    
+    const updateImage = () => {
+        img.src = images[currentIndex];
+        count.textContent = `${currentIndex + 1} / ${images.length}`;
+        prevBtn.style.display = currentIndex === 0 ? 'none' : '';
+        nextBtn.style.display = currentIndex === images.length - 1 ? 'none' : '';
+    };
+    
+    const openViewer = (imageList, viewerTitle, startIndex = 0) => {
+        images = imageList;
+        currentIndex = startIndex;
+        title.textContent = viewerTitle || '';
+        
+        // On mobile, show all images stacked vertically
+        const isMobile = window.innerWidth < 560;
+        if (isMobile) {
+            body.innerHTML = '';
+            images.forEach((src, i) => {
+                const imgEl = document.createElement('img');
+                imgEl.className = 'img-viewer-img';
+                imgEl.src = src;
+                imgEl.alt = `${viewerTitle} ${i + 1}`;
+                imgEl.loading = 'lazy';
+                body.appendChild(imgEl);
+            });
+            count.style.display = 'none';
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            count.style.display = '';
+            prevBtn.style.display = '';
+            nextBtn.style.display = '';
+            body.innerHTML = '';
+            body.appendChild(img);
+            img.src = images[currentIndex];
+            updateImage();
+        }
+        
+        viewer.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    const closeViewer = () => {
+        viewer.classList.remove('is-open');
+        document.body.style.overflow = '';
+        img.src = '';
+        body.innerHTML = '';
+        body.appendChild(img);
+    };
+    
+    prevBtn?.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateImage();
+        }
+    });
+    
+    nextBtn?.addEventListener('click', () => {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            updateImage();
+        }
+    });
+    
+    closeBtn?.addEventListener('click', closeViewer);
+    
+    viewer?.addEventListener('click', (e) => {
+        if (e.target === viewer) closeViewer();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!viewer.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeViewer();
+        if (e.key === 'ArrowLeft' && currentIndex > 0) { currentIndex--; updateImage(); }
+        if (e.key === 'ArrowRight' && currentIndex < images.length - 1) { currentIndex++; updateImage(); }
+    });
+    
+    // Bind triggers
+    document.querySelectorAll('.img-viewer-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            try {
+                const imageList = JSON.parse(trigger.dataset.images || '[]');
+                const viewerTitle = trigger.dataset.title || '';
+                openViewer(imageList, viewerTitle);
+            } catch (err) {
+                console.error('Error loading images:', err);
+            }
+        });
+    });
+}
+
+// Init image viewer
+document.addEventListener('DOMContentLoaded', initImageViewer);

@@ -17,7 +17,7 @@
         <img
             class="envelope-img"
             id="envelope-img"
-            src="img/Animacion-sobre/ezgif-frame-005-Photoroom.png"
+            src="img/animacion-sobre/ezgif-frame-005-Photoroom_5_11zon.webp"
             alt="Abrir invitación"
         />
         <p class="envelope-cta" id="envelope-cta">Tocá para abrir la invitación</p>
@@ -35,7 +35,7 @@
         </div>
         <div class="music-player-controls">
             <button class="music-btn" id="music-toggle" aria-label="Pausar música">
-                <span class="pause-icon" id="music-icon">&#9654;</span>
+                <span class="pause-icon" id="music-icon"><img src="img/iconos/Play.png" alt="Reproducir" width="16" height="16"></span>
             </button>
         </div>
     </div>
@@ -267,7 +267,7 @@
                 <div class="now-controls">
                     <button class="now-skip" id="section-prev" type="button" aria-label="Canción anterior">&#8249;</button>
                     <button class="now-play" id="section-music-toggle" type="button" aria-label="Reproducir música">
-                        <span id="section-music-icon">&#9654;</span>
+                        <span id="section-music-icon"><img src="img/iconos/Play.png" alt="Reproducir" width="22" height="22"></span>
                     </button>
                     <button class="now-skip" id="section-next" type="button" aria-label="Siguiente canción">&#8250;</button>
                 </div>
@@ -416,7 +416,7 @@
                 </div>
                 <ol class="links-info-list">
                     <li>
-                        <a class="links-info-item" href="HOTELES%20GUANAJUATO%20CENTRO%20BODA%20A&amp;V.pdf" data-pdf-title="Sugerencia de hospedaje">
+                        <a class="links-info-item img-viewer-trigger" href="#" data-images='["img/Pdf-hoteles/HOTELES GUANAJUATO CENTRO BODA A&V_page-0001_1_11zon.webp","img/Pdf-hoteles/HOTELES GUANAJUATO CENTRO BODA A&V_page-0002_2_11zon.webp","img/Pdf-hoteles/HOTELES GUANAJUATO CENTRO BODA A&V_page-0003_3_11zon.webp"]' data-title="Sugerencia de hospedaje">
                             <span class="links-info-icon"><img src="img/iconos/HOSPEDAJE.png" alt=""></span>
                             <div class="links-info-meta">
                                 <h3>Sugerencia de hospedaje</h3>
@@ -432,7 +432,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="links-info-item" href="QU%C3%89%20HACER%20EN%20GUANAJUATO.pdf" data-pdf-title="Actividades en la ciudad">
+                        <a class="links-info-item img-viewer-trigger" href="#" data-images='["img/pdf-quehacer/QUE-HACER-1.webp","img/pdf-quehacer/QUE-HACER-2.webp"]' data-title="Actividades en la ciudad">
                             <span class="links-info-icon"><img src="img/iconos/ACTIVIDADES.png" alt=""></span>
                             <div class="links-info-meta">
                                 <h3>Actividades en la ciudad</h3>
@@ -477,6 +477,20 @@
             <iframe class="pdf-modal-frame" id="pdf-modal-frame" title="Vista previa del PDF"></iframe>
         </div>
     </dialog>
+
+    <!-- ── Image Viewer Popup ── -->
+    <div class="img-viewer" id="img-viewer" aria-label="Visor de imágenes">
+        <div class="img-viewer-header">
+            <span class="img-viewer-title" id="img-viewer-title"></span>
+            <span class="img-viewer-count" id="img-viewer-count"></span>
+            <button class="img-viewer-close" id="img-viewer-close" aria-label="Cerrar">×</button>
+        </div>
+        <div class="img-viewer-body" id="img-viewer-body">
+            <img class="img-viewer-img" id="img-viewer-img" src="" alt="">
+        </div>
+        <button class="img-viewer-prev" id="img-viewer-prev" aria-label="Anterior">‹</button>
+        <button class="img-viewer-next" id="img-viewer-next" aria-label="Siguiente">›</button>
+    </div>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@pdfslick/core@4.0.0/dist/umd/index.js"></script>

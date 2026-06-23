@@ -21,7 +21,9 @@ function initMusic() {
     if (!music || !toggle || !icon) return;
 
     const setIcons = () => {
-        icon.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+        icon.innerHTML = isPlaying
+            ? '<img src="img/iconos/boton-de-pausa.png" alt="Pausar" width="16" height="16" style="display:block;">'
+            : '<img src="img/iconos/Play.png" alt="Reproducir" width="16" height="16" style="display:block;">';
     };
 
     const toggleMusic = () => {
@@ -230,7 +232,9 @@ function initPlaylist() {
     };
 
     const setIcons = () => {
-        icon.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+        icon.innerHTML = isPlaying
+            ? '<img src="img/iconos/boton-de-pausa.png" alt="Pausar" width="22" height="22" style="display:block;">'
+            : '<img src="img/iconos/Play.png" alt="Reproducir" width="22" height="22" style="display:block;">';
     };
 
     const playCurrentTrack = () => {
@@ -531,16 +535,23 @@ function initEnvelope() {
 
     if (!cover) return;
 
-    /* Already opened — skip instantly */
-    if (localStorage.getItem('bodaEnvelopeOpened') === '1') {
-        cover.style.display = 'none';
-        if (bgMusic) {
-            bgMusic.volume = 0.25;
-            bgMusic.play().catch(() => {});
-        }
-        if (musicPlayer) musicPlayer.style.display = 'flex';
-        return;
+    /* Preload all animation frames in memory */
+    const TOTAL_FRAMES = 49;
+    const frameCache = [];
+    let framesLoaded = 0;
+    for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.src = 'img/animacion-sobre/ezgif-frame-' + String(i).padStart(3, '0') + '-Photoroom_' + i + '_11zon.webp';
+        img.onload = () => { framesLoaded++; };
+        frameCache[i] = img;
     }
+
+    /* Start background music already playing on page load */
+    if (bgMusic) {
+        bgMusic.volume = 0.25;
+        bgMusic.play().catch(() => {});
+    }
+    if (musicPlayer) musicPlayer.style.display = 'flex';
 
     let opened = false;
     let animFrame = 5; /* start from frame 6, frame 5 is already shown */
@@ -549,7 +560,6 @@ function initEnvelope() {
 
     function animateEnvelope() {
         animFrame++;
-        const totalFrames = 49;
 
         /* Fade out the cover at frame 30 — flash reveals the invitation before animation ends */
         if (!coverFaded && animFrame >= 30) {
@@ -558,19 +568,20 @@ function initEnvelope() {
             if (musicPlayer) musicPlayer.style.display = 'flex';
         }
 
-        if (animFrame > totalFrames) {
+        if (animFrame > TOTAL_FRAMES) {
             /* Animation finished */
             clearTimeout(animTimer);
             return;
         }
         const padded = String(animFrame).padStart(3, '0');
-        envImg.src = 'img/Animacion-sobre/ezgif-frame-' + padded + '-Photoroom.png';
+        envImg.src = 'img/animacion-sobre/ezgif-frame-' + padded + '-Photoroom_' + animFrame + '_11zon.webp';
         animTimer = setTimeout(animateEnvelope, 50); /* ~20fps */
     }
 
     function openEnvelope() {
         if (opened) return;
         opened = true;
+        clearTimeout(autoStartTimer);
 
         /* Start the frame animation */
         animateEnvelope();
@@ -589,10 +600,14 @@ function initEnvelope() {
 
         /* Hide CTA text */
         if (cta) cta.classList.add('is-hidden');
-
-        /* Save state so it never shows again on reload */
-        localStorage.setItem('bodaEnvelopeOpened', '1');
     }
+
+    /* Auto-start animation after 10 seconds if user hasn't clicked */
+    let autoStartTimer = setTimeout(() => {
+        if (!opened) {
+            openEnvelope();
+        }
+    }, 10000);
 
     /* Any click anywhere on the cover opens the envelope */
     cover.addEventListener('click', openEnvelope);
