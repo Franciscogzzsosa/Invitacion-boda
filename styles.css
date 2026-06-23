@@ -30,9 +30,6 @@
     --section-y:   clamp(56px, 8vh, 104px);
 }
 
-/* ---------- Reset ---------- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 html, body {
     height: 100%;
     background: var(--bg);
@@ -1729,7 +1726,7 @@ button { font-family: inherit; cursor: pointer; }
     top: 20px;
     right: 20px;
     z-index: 100;
-    display: flex;
+    display: none;
     align-items: center;
     gap: 10px;
     padding: 8px 14px 8px 12px;
@@ -2346,3 +2343,89 @@ button { font-family: inherit; cursor: pointer; }
     }
     .vinyl-svg { animation-play-state: paused !important; }
 }
+
+/* =============================================================
+   ENVELOPE COVER — Alicia & Víctor
+   Matches reference: cream/marfil paper, olive green calligraphy,
+   black wax seal with branch motif, formal romantic style.
+   ============================================================= */
+
+/* ── Envelope Cover — WebP animation ── */
+.envelope-cover {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #FBF6F4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.envelope-img {
+    max-width: 92vw;
+    max-height: 72vh;
+    width: auto;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    pointer-events: none; /* clicks pass through to the cover div */
+    /* Constrain aspect ratio to match the PNG frames (560x752) */
+    aspect-ratio: 560 / 752;
+    object-fit: contain;
+}
+
+/* ── CTA text ── */
+.envelope-cta {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #C5AC96;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+    animation: ctaBreath 3s ease-in-out 0.8s infinite;
+}
+
+.envelope-cta.is-hidden {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* ── Cover fades out after open ── */
+.envelope-cover.is-done {
+    animation: coverFadeOut 1.2s ease forwards;
+    pointer-events: none;
+}
+
+/* ── Keyframes ── */
+@keyframes ctaBreath {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50%       { opacity: 1;   transform: translateX(-50%) translateY(-3px); }
+}
+
+@keyframes coverFadeOut {
+    0%   { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .envelope-cta {
+        animation: none;
+        opacity: 0.8;
+    }
+    .envelope-cover.is-done {
+        animation: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+

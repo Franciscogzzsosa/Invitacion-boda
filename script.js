@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    initEnvelope();
     initCountdown();
     initMusic();
     initPlaylist();
@@ -517,4 +518,86 @@ DESCRIPTION:${event.description}
 LOCATION:${event.location}
 END:VEVENT
 END:VCALENDAR`;
+}
+
+
+/* ── Envelope Cover — PNG frame animation ── */
+function initEnvelope() {
+    const cover       = document.getElementById('envelope-cover');
+    const envImg      = document.getElementById('envelope-img');
+    const cta         = document.getElementById('envelope-cta');
+    const bgMusic     = document.getElementById('bg-music');
+    const musicPlayer = document.getElementById('music-player');
+
+    if (!cover) return;
+
+    /* Already opened — skip instantly */
+    if (localStorage.getItem('bodaEnvelopeOpened') === '1') {
+        cover.style.display = 'none';
+        if (bgMusic) {
+            bgMusic.volume = 0.25;
+            bgMusic.play().catch(() => {});
+        }
+        if (musicPlayer) musicPlayer.style.display = 'flex';
+        return;
+    }
+
+    let opened = false;
+    let animFrame = 5; /* start from frame 6, frame 5 is already shown */
+    let animTimer = null;
+    let coverFaded = false;
+
+    function animateEnvelope() {
+        animFrame++;
+        const totalFrames = 49;
+
+        /* Fade out the cover at frame 30 — flash reveals the invitation before animation ends */
+        if (!coverFaded && animFrame >= 30) {
+            cover.classList.add('is-done');
+            coverFaded = true;
+            if (musicPlayer) musicPlayer.style.display = 'flex';
+        }
+
+        if (animFrame > totalFrames) {
+            /* Animation finished */
+            clearTimeout(animTimer);
+            return;
+        }
+        const padded = String(animFrame).padStart(3, '0');
+        envImg.src = 'img/Animacion-sobre/ezgif-frame-' + padded + '-Photoroom.png';
+        animTimer = setTimeout(animateEnvelope, 50); /* ~20fps */
+    }
+
+    function openEnvelope() {
+        if (opened) return;
+        opened = true;
+
+        /* Start the frame animation */
+        animateEnvelope();
+
+        /* Start music softly — fade it in */
+        if (bgMusic) {
+            bgMusic.volume = 0;
+            bgMusic.play().catch(() => {});
+            let vol = 0;
+            const fadeIn = setInterval(() => {
+                vol = Math.min(vol + 0.012, 0.25);
+                bgMusic.volume = parseFloat(vol.toFixed(3));
+                if (vol >= 0.25) clearInterval(fadeIn);
+            }, 50);
+        }
+
+        /* Hide CTA text */
+        if (cta) cta.classList.add('is-hidden');
+
+        /* Save state so it never shows again on reload */
+        localStorage.setItem('bodaEnvelopeOpened', '1');
+    }
+
+    /* Any click anywhere on the cover opens the envelope */
+    cover.addEventListener('click', openEnvelope);
+    cover.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        openEnvelope();
+    }, { passive: false });
 }
